@@ -1,0 +1,59 @@
+<div class="container mt-4">
+  <div class="card shadow p-4">
+    <h3 class="text-center mb-3">Employee Records</h3>
+
+    <p><strong>Total Employees:</strong> {{ employeeList.length }}</p>
+
+    <table class="table table-bordered table-striped align-middle">
+      <thead class="table-dark text-center">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Number</th>
+          <th>Account No</th>
+          <th>Role</th>
+          <th>Addresses</th>
+          <th>Profile</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let emp of employeeList">
+          <td>{{ emp.id }}</td>
+          <td>{{ emp.name }}</td>
+          <td>{{ emp.email }}</td>
+          <td>{{ emp.number }}</td>
+          <td>{{ emp.accountNo }}</td>
+          <td class="fw-bold text-primary">{{ emp.role }}</td>
+
+         
+          <td>
+              <ul class="mb-0 ps-3">
+                <li *ngFor="let addr of emp.addresses">
+                  {{ addr.houseNo }}, {{ addr.street }},
+                  {{ addr.city }}, {{ addr.state }} - {{ addr.pincode }}
+                </li>
+              </ul>
+            <ng-template #noAddress>
+              <span class="text-muted">No Address Found</span>
+            </ng-template>
+          </td>
+
+          <td class="text-center">
+            <img
+              *ngIf="emp.image"
+              [src]="emp.image"
+              alt="Profile"
+              width="60"
+              height="60"
+              class="rounded-circle border"
+            />
+            <span *ngIf="!emp.image" class="text-muted">No Image</span>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

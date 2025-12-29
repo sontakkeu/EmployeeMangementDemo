@@ -1,0 +1,10 @@
+.navbar .nav-link.active {
+    font-weight: bold;
+    border-bottom: 2px solid #fff;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    transition: 0.3s;
+  }
+  
